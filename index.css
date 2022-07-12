@@ -1,0 +1,249 @@
+/* 자주 쓰는 변수를 저장하고 적재적소에 쓰기 */
+/* 쓸 때는 var() 안에 쓴다 */
+:root {
+  /* color */
+  --white-color: #fff;
+  --black-color: #140a00;
+  --blue-color: #1359c7;
+  --red-color: #e30504;
+  --grey-dark-color: #616161;
+  --gray-light-color: #8e8e8e;
+
+  /* size */
+  --padding:12px;       /* 내부 여백 */   
+  --avatar-size: 36px;                 
+  --icon-size: 16px;
+
+  /* font size */
+  --font-large: 18px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+button:focus {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+}
+
+/* Header */
+header {
+  display: flex;  
+  justify-content: space-between;  /* 가로축-중심축 : 요소들 사이에 동일한 간격을 줌 */
+  padding: var(--padding);
+  background-color: var(--grey-dark-color);
+  color: var(--white-color);
+}
+
+header.logo {
+  font-size: var(--font-large);
+  font-weight: bold;
+}
+
+header.logo i {
+  color: var(--red-color);
+}
+
+header .icons .fa-search {
+  margin-right: var(--padding);
+}
+
+/* Video Player */
+.player {
+  position: sticky;   /* 위 아래 스크롤 시 비디오가 상단에 고정 */
+  top: 0;
+  text-align: center;  /* 비디오 가운데 정렬 */
+  background-color: var(--black-color);
+}
+
+/* 비디오의 너비가 일정크기 이상 커지지 않게 설정 */
+.player video {
+  width: 100%;
+  height: 100%;
+  max-width:800px;
+}
+
+body .info_upnext > .info {
+  padding: var(--padding);
+}
+
+/* Metadata */
+.info .metadata .hashtags {
+  display: flex;
+  font-size: var(--font-small);
+  color: var(--blue-color);
+}
+.info .metadata .hashtags li {
+  margin-right: var(--padding); 
+}
+.info .metadata .titleAndButton {
+  display: flex;
+}
+.info .metadata .titleAndButton .title {
+  font-size: var(--font-medium);
+  margin-right: var(--padding);
+}
+.info .metadata .titleAndButton .title.clamp { 
+  display: -webkit-box;           /* 말줄임표를 표현하는 속성들 */
+  -webkit-box-orient: vertical;  /* 속성이 하나라도 빠지면 기능 수행 불가 */
+  -webkit-line-clamp: 2;        /* 제한하고 싶은 줄 수 */ 
+  overflow: hidden;            /* 글자가 생략되고 ...으로 표시 */
+}
+.info .metadata .titleAndButton .comment {
+  text-align: center;
+  text-decoration: none;
+}
+.info .views {
+  font-size: var(--font-small);
+  color: var(--grey-dark-color);
+}
+
+/* Action Buttons */
+.info .actions {
+  display: flex;
+  justify-content: space-around;
+  margin: var(--padding) ;
+}
+.info .actions button {
+  display: flex;
+  flex-direction: column;  
+  font-size: var(--font-small);
+  color: var(--gray-light-color);
+}
+.info .actions button i {
+  margin: 0 auto;
+  margin-bottom: calc(var(--padding)/2);
+  font-size: 16px;
+}
+.info .actions button i.active {
+  color: var(--blue-color);
+}
+
+/* Channel Description */
+.channel {
+  display: flex;
+  justify-content: space-between;  /* 수평정렬, 아이템을 동일한 간격으로 양 끝에 배치 */
+  border-top: 1px solid var(--grey-dark-color);
+  border-bottom: 1px solid var(--grey-dark-color);
+}
+.channel .metadata {
+  display: flex;
+  align-items: center;  /*수직으로 중앙에 정렬*/
+}
+.channel .metadata .info {
+  display: flex;
+  flex-direction: column;  /* 세로 배치 */
+}
+.channel .metadata .infoImage {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+}
+.channel .metadata .info .name {
+  font-size: var(--font-medium);
+}
+.channel .metadata .info .subscribers {
+  color: var(--grey-dark-color);
+  font-size: var(--font-small);
+}
+.channel .subscribe {
+  text-transform: uppercase;  /* 모든 글자를 대문자로 바꿈 */
+  color: var(--red-color);
+  font-size: var(--font-medium);
+}
+.comment {
+  text-align: center;
+  margin: 50px;
+}
+.comment a{
+  text-decoration: none; /* 글씨에 밑줄이 없이 들어감 */
+}
+
+/* Up Next */
+.upNext {
+  padding: 0 var(--padding);
+  margin-bottom: var(--padding);
+}
+.upNext > .title {
+  font-size: var(--font-medium);
+  color: var(--grey-dark-color);
+  margin-bottom: calc(var(--padding) / 2);
+}
+.upNext .item {
+  display: flex;
+  margin-top: var(--padding);
+}
+.upNext .item .img {
+  flex: 1 1 35%;  /* 썸네일의 공간이 35% 차지 */
+  margin-right: var(--padding);
+}
+.upNext .item .img img {
+  width: 100%;
+}
+.upNext .item .info {
+  flex: 1 1 65%; /* 텍스트 공간이 65% 차지 */
+  padding: 0;
+}
+.upNext .item .moreBtn {
+  flex: 1 1 5%; 
+}
+.upNext .item .info {
+  display: flex;
+  flex-direction: column;
+}
+.upNext .item .info .title {
+	font-size: var(--font-small);
+}
+.upNext .item .info .name {
+  font-size: var(--font-small);
+  color: var(--grey-dark-color);
+}
+.upNext .item .info .views {
+  font-size: var(--font-micro);
+  color: var(--grey-dark-color);
+}
+.upNext .item .info .moreBtn {
+	height: 100%;
+}
+
+/* 모바일 버전 */
+.info_upnext {
+  display: flex;
+  flex-direction: column;  /* Up Next가 column으로 정렬 */
+}
+
+
+/* 데스크탑 버전 Mediaquery 사용 */
+@media screen and (min-width: 768px) { /*768px 이상일 때 전환*/
+  .info_upnext {
+    flex-direction: row; /* Up Next가 row로 표시*/
+    margin: var(--padding) 0;
+  }  
+  .info_upnext .info {
+      flex: 1 1 60%;
+    }
+  .info_upnext .upNext{
+      flex: 1 1 40%;
+    }
+  .upNext .item .info .title {
+      font-size: var(--font-medium);
+
+  }
+}
